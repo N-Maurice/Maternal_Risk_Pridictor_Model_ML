@@ -1,0 +1,11 @@
+{
+  "sample_filename": "modeling_sample.parquet",
+  "sample_sha256": "6c1973b0e3360f52486c6001615c6d96d49bde8f875669001b163327bb0f7a44",
+  "split_filename": "split_indices.npz",
+  "split_sha256": "4407ef7a5da41d54431787839d810521b736b310cd5ae772653eabea4fb780fe",
+  "raw_filename": "Nat2024PublicUS.c20250512.r20250708.txt",
+  "seed": 42,
+  "purpose": "Exact original audited sample and original immutable partitions for private hosted experiments; no raw file or final test predictions included.",
+  "original_test_row_ids_sha256": "89c3c743ed6b592d459e80d8d4dd4249b46ddd2e65cb1cbc4bbae74ee352e785",
+  "original_test_already_evaluated": true
+}

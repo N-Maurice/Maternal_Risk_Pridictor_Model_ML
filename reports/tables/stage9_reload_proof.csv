@@ -1,0 +1,5 @@
+artifact,max_absolute_difference,passed,sample_rows
+best_traditional.joblib,0.0,True,10
+best_deep.keras,0.0,True,10
+best_deep_savedmodel,0.0,True,10
+best_deep.h5,0.0,True,10

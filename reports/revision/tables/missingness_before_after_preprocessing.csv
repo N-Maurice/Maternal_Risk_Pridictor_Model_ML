@@ -1,0 +1,2 @@
+scope,rows,input_columns,encoded_columns,numeric_missing_before,nonfinite_after,refitting_performed
+"first 1000 original training rows, saved fitted preprocessing",1000,32,109,366,0,False

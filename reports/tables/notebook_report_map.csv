@@ -1,0 +1,11 @@
+topic,notebook,report_section
+Data audit and fixed-width alignment,01_data_preparation_and_eda.ipynb,II. Dataset Provenance and Raw Audit
+"Missing codes, reporting flags and structural categories",01_data_preparation_and_eda.ipynb,II. Dataset Provenance and Raw Audit
+"Target, sampling, exclusions and leakage",01_data_preparation_and_eda.ipynb,"III. Target Definition, Sampling and Leakage Control"
+"Encoding, outliers, imputation and feature engineering",01_data_preparation_and_eda.ipynb,IV. Preprocessing and Feature Engineering
+"Baselines, imbalance, cross-validation and learning curves",02_models_and_evaluation.ipynb,V. Traditional Machine Learning Experiments
+"Sequential/Functional models, tf.data and regularization",02_models_and_evaluation.ipynb,VI. Deep Learning Design and Optimization
+"Ablations, SHAP and subgroup differences",02_models_and_evaluation.ipynb,VII. Sensitivity Analysis and Explainability
+"Frozen test metrics, threshold trade-offs and calibration",02_models_and_evaluation.ipynb,VIII. Frozen Test Evaluation and Practical Interpretation
+"Two-notebook execution, optional experiments and limitations",Both notebooks,"IX. Reproducibility, Limitations and Further Work"
+Recall-focused operating points,02_models_and_evaluation.ipynb,X. Recall-Focused Operating-Point Analysis

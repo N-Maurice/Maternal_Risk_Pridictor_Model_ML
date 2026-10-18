@@ -1,0 +1,10 @@
+{
+  "traditional": "hist_gradient_boosting",
+  "traditional_threshold": 0.20067758965365926,
+  "deep": "dl_functional",
+  "deep_threshold": 0.6349734663963318,
+  "selection_metric": "validation average_precision; threshold maximum validation F1",
+  "frozen": true,
+  "core_only": true,
+  "test_opened": false
+}

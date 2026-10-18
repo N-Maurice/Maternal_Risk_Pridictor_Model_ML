@@ -1,0 +1,18 @@
+source_code,readable_name,fitted_training_median,training_missing,policy
+MAGER,maternal_age_years,30.0,0,training median + missing indicator; no validation/test fitting
+FAGECOMB,paternal_age_years,32.0,20936,training median + missing indicator; no validation/test fitting
+PRIORLIVE,previous_births_now_living,1.0,407,training median + missing indicator; no validation/test fitting
+PRIORDEAD,previous_births_now_deceased,0.0,662,training median + missing indicator; no validation/test fitting
+PRIORTERM,previous_other_pregnancy_terminations,0.0,827,training median + missing indicator; no validation/test fitting
+CIG_0,daily_cigarettes_before_pregnancy,0.0,1418,training median + missing indicator; no validation/test fitting
+M_Ht_In,maternal_height_inches,64.0,1731,training median + missing indicator; no validation/test fitting
+BMI,prepregnancy_body_mass_index,26.6,5553,training median + missing indicator; no validation/test fitting
+PWgt_R,prepregnancy_weight_pounds,155.0,4923,training median + missing indicator; no validation/test fitting
+RF_CESARN,previous_cesarean_count,0.0,834,training median + missing indicator; no validation/test fitting
+advanced_age,maternal_age_at_least_35,0.0,0,training median + missing indicator; no validation/test fitting
+teen,maternal_age_under_20,0.0,0,training median + missing indicator; no validation/test fitting
+prior_preterm,previous_preterm_birth_indicator,0.0,818,training median + missing indicator; no validation/test fitting
+prior_pregnancy_none,no_previous_pregnancy_indicator,0.0,22560,training median + missing indicator; no validation/test fitting
+risk_count,recorded_history_risk_count,0.0,15039,training median + missing indicator; no validation/test fitting
+age_x_chronic_hypertension,advanced_age_with_chronic_hypertension,0.0,818,training median + missing indicator; no validation/test fitting
+plurality_x_prior_preterm,plurality_times_previous_preterm_indicator,0.0,818,training median + missing indicator; no validation/test fitting

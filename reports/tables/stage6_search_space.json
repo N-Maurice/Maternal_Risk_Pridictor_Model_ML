@@ -1,0 +1,74 @@
+{
+  "space": {
+    "depth": [
+      1,
+      2,
+      3
+    ],
+    "units": [
+      32,
+      64,
+      96
+    ],
+    "dropout": [
+      0.15,
+      0.3
+    ],
+    "learning_rate": [
+      0.0005,
+      0.001
+    ],
+    "batch_size": [
+      512,
+      1024
+    ],
+    "optimizer": [
+      "adam",
+      "rmsprop"
+    ],
+    "l2": [
+      0.0001,
+      0.001
+    ]
+  },
+  "trials_per_api": 3,
+  "realized_trials": [
+    {
+      "depth": 1,
+      "units": 96,
+      "dropout": 0.3,
+      "learning_rate": 0.0005,
+      "batch_size": 512,
+      "optimizer": "rmsprop",
+      "l2": 0.0001
+    },
+    {
+      "depth": 3,
+      "units": 32,
+      "dropout": 0.15,
+      "learning_rate": 0.001,
+      "batch_size": 1024,
+      "optimizer": "rmsprop",
+      "l2": 0.001
+    },
+    {
+      "depth": 3,
+      "units": 96,
+      "dropout": 0.3,
+      "learning_rate": 0.0005,
+      "batch_size": 1024,
+      "optimizer": "adam",
+      "l2": 0.001
+    }
+  ],
+  "max_epochs_per_trial": 16,
+  "final_max_epochs": 24,
+  "tuning_training_rows": 60000,
+  "final_training_rows": 210000,
+  "class_weights": {
+    "0": 0.5580416458508275,
+    "1": 4.807252083142569
+  },
+  "selection": "external sklearn validation average_precision after best val_pr_auc checkpoint",
+  "seed": 42
+}

@@ -1,0 +1,16 @@
+model,params,mean_test_score,std_test_score
+logistic,"{'model__class_weight': None, 'model__C': 0.1}",0.31574858285090257,0.0026855397860605424
+logistic,"{'model__class_weight': 'balanced', 'model__C': 0.1}",0.313752157663278,0.002812798703411297
+logistic,"{'model__class_weight': 'balanced', 'model__C': 10}",0.31874915798291115,0.0011359932962009388
+logistic,"{'model__class_weight': None, 'model__C': 1}",0.3195411974083345,0.0014065301590946125
+random_forest,"{'model__min_samples_leaf': 30, 'model__max_features': 'sqrt', 'model__class_weight': None}",0.31291747506941675,0.002905157518708201
+random_forest,"{'model__min_samples_leaf': 30, 'model__max_features': 'sqrt', 'model__class_weight': 'balanced_subsample'}",0.3100154654575088,0.004578991647548333
+random_forest,"{'model__min_samples_leaf': 10, 'model__max_features': 'sqrt', 'model__class_weight': None}",0.31933875008212637,0.0011483437964803131
+random_forest,"{'model__min_samples_leaf': 30, 'model__max_features': 0.5, 'model__class_weight': 'balanced_subsample'}",0.3118161858536532,0.0008282042137703266
+hist_gradient_boosting,"{'model__max_leaf_nodes': 15, 'model__learning_rate': 0.05, 'model__l2_regularization': 1.0, 'model__class_weight': None}",0.32467312673198817,0.004866011839194815
+hist_gradient_boosting,"{'model__max_leaf_nodes': 31, 'model__learning_rate': 0.05, 'model__l2_regularization': 1.0, 'model__class_weight': None}",0.3226659241431789,0.003378935941118767
+hist_gradient_boosting,"{'model__max_leaf_nodes': 31, 'model__learning_rate': 0.05, 'model__l2_regularization': 10.0, 'model__class_weight': None}",0.3213712387590129,0.004088253049775123
+hist_gradient_boosting,"{'model__max_leaf_nodes': 15, 'model__learning_rate': 0.1, 'model__l2_regularization': 10.0, 'model__class_weight': 'balanced'}",0.3161086052267679,0.002105767013662797
+svm,"{'model__gamma': 0.01, 'model__class_weight': None, 'model__C': 0.5}",0.2994921831770075,0.029224362986752246
+svm,"{'model__gamma': 0.01, 'model__class_weight': None, 'model__C': 2.0}",0.2950242998408121,0.03239615875806286
+svm,"{'model__gamma': 'scale', 'model__class_weight': None, 'model__C': 0.5}",0.3035758207718653,0.028623285548667134

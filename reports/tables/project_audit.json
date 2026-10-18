@@ -1,0 +1,36 @@
+{
+  "notebooks": [
+    {
+      "notebook": "notebooks/01_data_preparation_and_eda.ipynb",
+      "cells": 59,
+      "executed_code_cells": 26,
+      "embedded_charts": 8
+    },
+    {
+      "notebook": "notebooks/02_models_and_evaluation.ipynb",
+      "cells": 81,
+      "executed_code_cells": 38,
+      "embedded_charts": 18
+    },
+    {
+      "notebook": "notebooks/03_lean_feature_evaluation.ipynb",
+      "cells": 42,
+      "executed_code_cells": 20,
+      "embedded_charts": 5
+    }
+  ],
+  "notebook_cells": 182,
+  "executed_code_cells": 84,
+  "execution_errors": 0,
+  "raw_rows": 3638436,
+  "raw_sha256": "ff8b58eb90c440198ba3bc8a8c7b446a3714f75fa95fae391bd10b601ede87b2",
+  "user_guide_preserved": true,
+  "main_comparison_entries": 8,
+  "report_body_words": 4590,
+  "report_figures": 7,
+  "original_test_guard_unchanged": true,
+  "new_test_predictions": 0,
+  "raw_data_tracked": false,
+  "report_authorship_review_pending": true,
+  "remote_hosted_account_execution": false
+}

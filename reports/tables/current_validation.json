@@ -1,0 +1,46 @@
+{
+  "scope": "required core",
+  "notebooks": [
+    {
+      "notebook": "notebooks/01_data_preparation_and_eda.ipynb",
+      "cells": 59,
+      "executed_code_cells": 26,
+      "embedded_charts": 8
+    },
+    {
+      "notebook": "notebooks/02_models_and_evaluation.ipynb",
+      "cells": 81,
+      "executed_code_cells": 38,
+      "embedded_charts": 18
+    },
+    {
+      "notebook": "notebooks/03_lean_feature_evaluation.ipynb",
+      "cells": 42,
+      "executed_code_cells": 20,
+      "embedded_charts": 5
+    }
+  ],
+  "main_comparison_entries": 8,
+  "tests_passed": 21,
+  "new_test_model_predictions": 0,
+  "original_test_guard_unchanged": true,
+  "training_code_smoke_test": "All four classical CV searches plus both tf.data/Keras architectures on real training rows only; no new study metrics claimed.",
+  "read_only_input_simulation": "both fresh-kernel runs passed, without historical extension assets",
+  "remote_hosted_account_execution": false,
+  "threshold_scope": "post-hoc validation only; no clinical cutoff or independent test claim",
+  "read_only_input_files_unchanged": 118,
+  "report_prose_word_estimate": 3978,
+  "feature_challenger": {
+    "scope": "matched exploratory training/validation feature ablation; original test closed",
+    "fitted_pipelines": 4,
+    "primary_family": "hist_gradient_boosting",
+    "control_family": "logistic",
+    "current_inputs": 32,
+    "challenger_inputs": 16,
+    "full_refit_reference_score_difference": 0.0,
+    "read_only_input_files_unchanged": 136,
+    "readonly_execution_passed": true,
+    "independently_retuned_lean_model": false,
+    "remote_hosted_account_execution": false
+  }
+}

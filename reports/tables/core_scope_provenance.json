@@ -1,0 +1,34 @@
+{
+  "backup": "/tmp/maternal-standard-scope-backup",
+  "protected_evidence_sha256": {
+    "data/processed/state/test_evaluation_guard.json": "31630935ea1a0955f15eeb97bd29c57931148642cef92c0ae1be5f8c0494403d",
+    "data/processed/state/deep_validation_predictions.npz": "b380e29ab68d8dda8adeba6c35f069f26d1fff558e590b15d178fad287ee1600",
+    "data/processed/state/test_deep_predictions.npz": "c10bb976f22ad4f71ef1ac960a47d2de40367c961577966cd005ae7f012ea8eb",
+    "data/processed/state/test_traditional_predictions.npz": "90f3a9a7d5a2b42384bdfde61cd28d631318adf9b281cca99a70ab0fa336dacc",
+    "data/processed/state/traditional_validation_predictions.npz": "169d34a5151990bbfef44f64362f59ed1c03ff152a78397defce6e4ad0442da5"
+  },
+  "removed_from_main": [
+    "standalone weighted LR demo",
+    "SMOTENC demos",
+    "extra RF configurations",
+    "reduced-feature LR demo",
+    "LightGBM",
+    "native categorical booster",
+    "Extra Trees/development model comparisons",
+    "calibrated ensemble",
+    "SHAP",
+    "decision-curve and TensorBoard extensions"
+  ],
+  "preserved_as_supporting_history": "Existing artifacts and historical development results are retained, but are not main-study results.",
+  "main_models": [
+    "dummy",
+    "plain_logistic",
+    "logistic",
+    "random_forest",
+    "hist_gradient_boosting",
+    "svm",
+    "dl_sequential",
+    "dl_functional"
+  ],
+  "new_threshold_scope": "post-hoc validation exploration; no new final test or clinical cutoff claim"
+}

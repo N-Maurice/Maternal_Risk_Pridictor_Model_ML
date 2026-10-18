@@ -1,0 +1,4 @@
+notebook,executed_code_cells,error_outputs,schema_valid,embedded_charts,independent_kernel
+notebooks/01_data_preparation_and_eda.ipynb,26,0,True,8,True
+notebooks/02_models_and_evaluation.ipynb,38,0,True,18,True
+notebooks/03_lean_feature_evaluation.ipynb,20,0,True,5,True

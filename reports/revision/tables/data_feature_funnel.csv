@@ -1,0 +1,8 @@
+step,records,columns
+Raw source records,3638436,
+Audited selected-column cache,3638436,118.0
+Known primary targets,3633827,
+Stratified modeling sample,300000,
+Original source core inputs,210000,23.0
+Engineered core inputs,210000,32.0
+Original one-hot representation,210000,109.0

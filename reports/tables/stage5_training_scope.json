@@ -1,0 +1,18 @@
+{
+  "train_rows": 210000,
+  "validation_rows": 45000,
+  "tuning_rows": 60000,
+  "svm_training_rows": 6000,
+  "svm_positive_rows": 624,
+  "fit_on_test": false,
+  "threshold_rule": "Maximum validation F1; ties use first threshold",
+  "imbalance": "None versus balanced weights inside training-fold searches; no oversampling",
+  "learning_curve_scope": "training-only CV",
+  "selection": {
+    "traditional": "hist_gradient_boosting",
+    "traditional_threshold": 0.20067758965365926,
+    "best_tree": "hist_gradient_boosting",
+    "selection_metric": "validation average_precision",
+    "test_opened": false
+  }
+}

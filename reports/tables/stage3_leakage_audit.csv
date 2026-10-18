@@ -1,0 +1,220 @@
+field,input_role,decision,reason
+DOB_YY,EXCLUDE_leakage,EXCLUDE,birth date outcome-dependent
+DOB_MM,EXCLUDE_leakage,EXCLUDE,birth month shifts with gestation
+DOB_TT,EXCLUDE_leakage,EXCLUDE,delivery time
+DOB_WK,EXCLUDE_leakage,EXCLUDE,delivery weekday
+BFACIL,EXCLUDE_leakage,EXCLUDE,place of delivery
+F_BFACIL,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+BFACIL3,EXCLUDE_leakage,EXCLUDE,place of delivery
+MAGER,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+MAGER14,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+MAGER9,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+RESTATUS,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+MRACE31,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+MRACE6,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+MRACE15,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+MRACEIMP,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+MHISPX,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+MHISP_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+F_MHISP,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+MRACEHISP,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+MAR_P,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+DMAR,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+MAR_IMP,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+F_MAR_P,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+MEDUC,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+F_MEDUC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+FAGERPT_FLG,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+FAGECOMB,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+FAGEREC11,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+FRACE31,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+FRACE6,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+FRACE15,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+FHISPX,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+FHISP_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+F_FHISP,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+FRACEHISP,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+FEDUC,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+f_FEDUC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+PRIORLIVE,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+PRIORDEAD,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+PRIORTERM,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+LBO_REC,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+TBO_REC,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+ILLB_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+ILLB_R11,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+ILOP_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+ILOP_R11,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+ILP_R,KEEP_candidate,EXCLUDE,Numeric interval uses infant birth date (guide technical note p55); only no-prior-pregnancy structural flag can be retained.
+ILP_R11,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+PRECARE,KEEP_candidate,EXCLUDE,Month of care is calculated using obstetric gestation (guide technical note p55–56).
+F_MPCB,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+PRECARE5,KEEP_candidate,EXCLUDE,Month of care is calculated using obstetric gestation (guide technical note p55–56).
+PREVIS,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+PREVIS_REC,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+F_TPCV,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+WIC,KEEP_candidate,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+F_WIC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+CIG_0,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+CIG_1,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+CIG_2,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+CIG_3,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+CIG0_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+CIG1_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+CIG2_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+CIG3_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+F_CIGS_0,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CIGS_1,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CIGS_2,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CIGS_3,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+CIG_REC,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+F_TOBACO,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+M_Ht_In,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+F_M_HT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+BMI,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+BMI_R,KEEP_candidate,EXCLUDE,Redundant with BMI; engineered BMI categories use explicit standard thresholds.
+PWgt_R,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+F_PWGT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+DWgt_R,EXCLUDE_leakage,EXCLUDE,delivery weight
+F_DWGT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+WTGAIN,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+WTGAIN_REC,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+F_WTGAIN,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+RF_PDIAB,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+RF_GDIAB,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+RF_PHYPE,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+RF_GHYPE,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+RF_EHYPE,ABLATION_time_dependent,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+RF_PPTERM,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+F_RF_PDIAB,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_GDIAB,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_PHYPER,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_GHYPER,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_ECLAMP,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_PPB,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+RF_INFTR,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+RF_FEDRG,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+RF_ARTEC,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+f_RF_INFT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_INF_DRG,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_INF_ART,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+RF_CESAR,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+RF_CESARN,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+F_RF_CESAR,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_RF_NCESAR,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+NO_RISKS,EXCLUDE_leakage,EXCLUDE,summary includes gestational conditions
+IP_GON,KEEP_candidate,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+IP_SYPH,KEEP_candidate,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+IP_CHLAM,KEEP_candidate,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+IP_HEPB,KEEP_candidate,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+IP_HEPC,KEEP_candidate,ABLATION,Accumulates during pregnancy or has unrecorded onset/availability; excluded from core.
+F_IP_GONOR,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_IP_SYPH,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_IP_CHLAM,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_IP_HEPATB,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_IP_HEPATC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+NO_INFEC,EXCLUDE_leakage,EXCLUDE,summary flag
+OB_ECVS,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+OB_ECVF,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_OB_SUCC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_OB_FAIL,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+LD_INDL,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+LD_AUGM,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+LD_STER,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+LD_ANTB,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+LD_CHOR,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+LD_ANES,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_LD_INDL,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_LD_AUGM,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_LD_STER,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_LD_ANTB,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_LD_CHOR,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_LD_ANES,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+NO_LBRDLV,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+ME_PRES,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+ME_ROUT,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+ME_TRIAL,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_ME_PRES,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_ME_ROUT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_ME_TRIAL,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+RDMETH_REC,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+DMETH_REC,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+MM_MTR,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+MM_PLAC,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+MM_RUPT,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+MM_UHYST,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+MM_AICU,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_MM_MTR,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_MM_RUPT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_MM_UHYST,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_MM_AICU,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+NO_MMORB,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+ATTEND,EXCLUDE_leakage,EXCLUDE,delivery attendant
+MTRAN,EXCLUDE_leakage,EXCLUDE,transfer at delivery
+PAY,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+PAY_REC,KEEP_candidate,EXCLUDE,"Delivery payment source; reporting/subgroups only, prenatal value not established."
+F_PAY,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_PAY_REC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+APGAR5,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+APGAR5R,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_APGAR5,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+APGAR10,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+APGAR10R,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+DPLURAL,KEEP_candidate,KEEP,"History, prepregnancy characteristic, demographic, or prenatal plurality; recorded values may be imperfect proxies."
+IMP_PLUR,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+SETORDER_R,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+SEX,KEEP_candidate,EXCLUDE,Recorded at birth; prenatal ascertainment not established.
+IMP_SEX,REVIEW,EXCLUDE,Not approved by prenatal availability audit; do not infer suitability from an unspecified role.
+DLMP_MM,EXCLUDE_leakage,EXCLUDE,last menses month; with birth date reconstructs gestation (direct leakage)
+DLMP_YY,EXCLUDE_leakage,EXCLUDE,last menses year; reconstructs gestation (direct leakage)
+OBGEST_FLG,EXCLUDE_leakage,EXCLUDE,gestation computation flag
+COMBGEST,TARGET,EXCLUDE,Outcome/gestation source; never a predictor.
+GESTREC10,EXCLUDE_leakage,EXCLUDE,target-derived
+GESTREC3,TARGET,EXCLUDE,Outcome/gestation source; never a predictor.
+LMPUSED,EXCLUDE_leakage,EXCLUDE,gestation computation flag
+OEGest_Comb,TARGET,EXCLUDE,Outcome/gestation source; never a predictor.
+OEGest_R10,EXCLUDE_leakage,EXCLUDE,target-derived
+OEGest_R3,TARGET,EXCLUDE,Outcome/gestation source; never a predictor.
+DBWT,EXCLUDE_leakage,EXCLUDE,birth weight (outcome)
+BWTR12,EXCLUDE_leakage,EXCLUDE,birth weight
+BWTR4,EXCLUDE_leakage,EXCLUDE,birth weight
+AB_AVEN1,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+AB_AVEN6,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+AB_NICU,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+AB_SURF,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+AB_ANTI,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+AB_SEIZ,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_AB_VENT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_AB_VENT6,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_AB_NIUC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_AB_SURFAC,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_AB_SEIZ,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+NO_ABNORM,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_ANEN,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_MNSB,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_CCHD,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_CDH,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_OMPH,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_GAST,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_CA_ANEN,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_MENIN,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_HEART,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_HERNIA,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_OMPHA,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_GASTRO,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+CA_LIMB,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_CLEFT,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_CLPAL,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_DOWN,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_DISOR,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+CA_HYPO,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_CA_LIMB,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_CLEFT,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_DOWNS,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_CHROM,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+F_CA_HYPOS,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."
+NO_CONGEN,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+ITRAN,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+ILIVE,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+BFED,EXCLUDE_leakage,EXCLUDE,labor/delivery/newborn/maternal-morbidity variable recorded at or after birth
+F_BFED,REPORTING_FLAG,EXCLUDE,"Reporting audit/cleaning only, including outcome reporting flags."

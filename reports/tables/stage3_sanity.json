@@ -1,0 +1,17 @@
+{
+  "development_rows": 255000,
+  "reserved_test_rows": 45000,
+  "sanity_roc_auc": 0.6364696696457617,
+  "depth": 3,
+  "auc_investigation_trigger": 0.85,
+  "implausibly_high_importance_flags": [
+    "categorical__DPLURAL_1.0"
+  ],
+  "investigation": "No AUC trigger",
+  "short_interpregnancy_interval": "Not safely derivable: ILP_R uses current birth date. No target gestation subtraction is permitted.",
+  "limitations": [
+    "Row-level data lack maternal/pregnancy identifiers; repeated pregnancies or siblings may cross splits. Singleton sensitivity and cautious generalization required.",
+    "No geography or clinical biomarkers; all availability claims remain retrospective proxies."
+  ],
+  "importance_review": "DPLURAL has high shallow-tree importance; plurality is a documented prenatal risk factor, not an outcome field. Keep it per protocol and quantify singleton sensitivity in Stage 5."
+}

@@ -1,0 +1,83 @@
+{
+  "logistic": {
+    "space": {
+      "model__C": [
+        0.1,
+        1,
+        10
+      ],
+      "model__class_weight": [
+        null,
+        "balanced"
+      ]
+    },
+    "n_iter": 4,
+    "cv_folds": 3,
+    "scoring": "average_precision",
+    "training_subsample": 60000
+  },
+  "random_forest": {
+    "space": {
+      "model__min_samples_leaf": [
+        10,
+        30
+      ],
+      "model__max_features": [
+        "sqrt",
+        0.5
+      ],
+      "model__class_weight": [
+        null,
+        "balanced_subsample"
+      ]
+    },
+    "n_iter": 4,
+    "cv_folds": 3,
+    "scoring": "average_precision",
+    "training_subsample": 60000
+  },
+  "hist_gradient_boosting": {
+    "space": {
+      "model__learning_rate": [
+        0.05,
+        0.1
+      ],
+      "model__max_leaf_nodes": [
+        15,
+        31
+      ],
+      "model__l2_regularization": [
+        1.0,
+        10.0
+      ],
+      "model__class_weight": [
+        null,
+        "balanced"
+      ]
+    },
+    "n_iter": 4,
+    "cv_folds": 3,
+    "scoring": "average_precision",
+    "training_subsample": 60000
+  },
+  "svm": {
+    "space": {
+      "model__C": [
+        0.5,
+        2.0
+      ],
+      "model__gamma": [
+        "scale",
+        0.01
+      ],
+      "model__class_weight": [
+        null,
+        "balanced"
+      ]
+    },
+    "n_iter": 3,
+    "cv_folds": 3,
+    "scoring": "average_precision",
+    "training_subsample": 6000
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "best_tree": "hist_gradient_boosting",
+  "permutation_rows": 1200,
+  "permutation_repeats": 3,
+  "shap_rows": 200,
+  "shap_method": "TreeExplainer, tree_path_dependent",
+  "shap_output": "raw; classifier-specific probability or log-odds units",
+  "test_rows_used": 0,
+  "clinical_reference": "https://www.cdc.gov/maternal-infant-health/preterm-birth/",
+  "interpretation": "Compare history of preterm birth, plurality, prepregnancy hypertension and smoking with CDC associations. Ranking is predictive, not causal; race is a social grouping, not a biological mechanism."
+}

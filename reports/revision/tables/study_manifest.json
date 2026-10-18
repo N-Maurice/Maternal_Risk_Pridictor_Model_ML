@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "date": "2026-10-18",
+  "selection_metric": "development validation AP",
+  "selected_candidate": "equal_weight_tree_neural_ensemble",
+  "original_test_predictions": 0,
+  "original_test_guard_sha256": "31630935ea1a0955f15eeb97bd29c57931148642cef92c0ae1be5f8c0494403d",
+  "training_rows": 210000,
+  "fit_rows": 178500,
+  "calibration_rows": 31500,
+  "deep_fit_rows": 151725,
+  "deep_early_stopping_rows": 26775,
+  "validation_rows": 45000,
+  "caveat": "Original validation has already supported earlier selection. Revision estimates are exploratory. Original test was previously opened and is never reused; a new external cohort is needed for revised final claims.",
+  "skip_deep": false
+}

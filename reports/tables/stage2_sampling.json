@@ -1,0 +1,10 @@
+{
+  "raw_rows": 3638436,
+  "target_code3_dropped": 4609,
+  "known_target_rows": 3633827,
+  "sample_rows": 300000,
+  "seed": 42,
+  "sampling": "Exact per-class random-priority reservoir, uniform without replacement",
+  "ratio_absolute_difference": 1.586890808688568e-06,
+  "justification": "300k bounds local tuning/embedding memory while retaining a substantial minority class; CV and SVM use documented training-only subsamples. Full-population class counts are computed before sampling."
+}

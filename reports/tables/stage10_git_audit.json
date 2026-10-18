@@ -1,0 +1,12 @@
+{
+  "git_repository": true,
+  "tracked_raw_paths": [],
+  "ignored_paths": [
+    "Data/Nat2024PublicUS.c20250512.r20250708.txt",
+    "Data/Nat2024us.zip",
+    "data/processed/modeling_sample.parquet",
+    "models/best_traditional.joblib"
+  ],
+  "raw_not_tracked": true,
+  "committed_or_published": false
+}

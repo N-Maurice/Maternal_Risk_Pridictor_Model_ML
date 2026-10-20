@@ -44,7 +44,7 @@ def stream_raw_audit(raw_path: Path, output_path: Path) -> dict:
     output_path.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2), flush=True)
     if rows < 20_000:
-        raise ValueError('Assignment raw-row requirement failed.')
+        raise ValueError('Raw file has fewer than 20,000 records; check the download before modelling.')
     if min(lengths) < 1330 or nonspace_tail:
         raise ValueError('Record length/padding requires investigation before parsing.')
     return result

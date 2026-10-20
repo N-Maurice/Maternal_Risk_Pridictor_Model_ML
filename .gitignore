@@ -17,6 +17,7 @@
 /runs/
 /archive/
 /exports/
+/private/
 
 # Final report: keep local for now; remove these rules when ready to publish.
 /reports/REPORT.md

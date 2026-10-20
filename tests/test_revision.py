@@ -72,13 +72,15 @@ class RevisionTests(unittest.TestCase):
 
     def test_two_notebooks_match_authorized_core_scope(self):
         manifest=json.loads((ROOT/'reports/tables/notebook_split_manifest.json').read_text())
+        from IPython.core.inputtransformer2 import TransformerManager
         found={}
         sources=[]
         for name in manifest['new_notebooks']:
-            nb=nbformat.read(ROOT/name,as_version=4);nbformat.validate(nb)
+            nb=nbformat.read(ROOT/Path(name).name,as_version=4)  # notebooks live in the project root;nbformat.validate(nb)
             for i,cell in enumerate(nb.cells):
                 if cell.cell_type=='code':
-                    compile(cell.source,'notebook-cell','exec')
+                    # IPython magics such as %tensorboard are translated exactly as Jupyter does.
+                    compile(TransformerManager().transform_cell(cell.source),'notebook-cell','exec')
                     sources.append(cell.source)
                     found[(name,i)]=hashlib.sha256(cell.source.encode()).hexdigest()
         for row in manifest['cells']:

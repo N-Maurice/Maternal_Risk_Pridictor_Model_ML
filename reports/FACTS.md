@@ -94,8 +94,6 @@
 - Validation thresholds maximize F1, not an established clinical utility/cost target.
 - Class-weighted probability calibration may be imperfect; inspect saved calibration plots.
 - No causal or clinical deployment claim.
-- Student report, public Drive upload, GitHub publication, and video remain student-owned.
-- AI-generated report percentage: not measured or certified.
 
 ## Current core scope and validation-only operating points
 
@@ -105,12 +103,12 @@
 - HistGradientBoosting exploratory validation-F2 threshold: 0.080211580; recall: 0.686538462; precision: 0.165048544; alert fraction: 0.432600000.
 - Deep functional exploratory validation-F2 threshold: 0.452131867; recall: 0.630982906; precision: 0.182149025; alert fraction: 0.360266667.
 - Operating-point evidence: reports/tables/core/validation_threshold_tradeoffs.csv.
-- Data notebook: notebooks/01_data_preparation_and_eda.ipynb.
-- Modeling notebook: notebooks/02_models_and_evaluation.ipynb.
+- Data notebook: 01_data_preparation_and_eda.ipynb.
+- Modeling notebook: 02_models_and_evaluation.ipynb.
 
 ## Separate matched feature experiment
 
-- Evaluation notebook: notebooks/03_lean_feature_evaluation.ipynb.
+- Evaluation notebook: 03_lean_feature_evaluation.ipynb.
 - Feature sets: 32 versus 16 model inputs.
 - Matched families: HistGradientBoosting and Logistic Regression.
 - Primary models and original test predictions: unchanged.

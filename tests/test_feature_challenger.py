@@ -24,7 +24,7 @@ class FeatureChallengerTests(unittest.TestCase):
         self.assertFalse(set(schema)&{'preterm_birth','no_previous_pregnancy_indicator',
             'recorded_history_risk_count','live_birth_order_category','total_birth_order_category',
             'prepregnancy_weight_pounds','previous_preterm_birth_indicator'})
-        n=nbformat.read(ROOT/'notebooks/03_lean_feature_evaluation.ipynb',as_version=4)
+        n=nbformat.read(ROOT/'03_lean_feature_evaluation.ipynb',as_version=4)
         nbformat.validate(n)
         self.assertTrue(n.metadata.review_execution.independent_kernel)
         for c in n.cells:

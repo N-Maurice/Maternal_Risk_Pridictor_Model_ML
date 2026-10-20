@@ -17,7 +17,7 @@
     "Extra Trees/development model comparisons",
     "calibrated ensemble",
     "SHAP",
-    "decision-curve and TensorBoard extensions"
+    "decision-curve extension"
   ],
   "preserved_as_supporting_history": "Existing artifacts and historical development results are retained, but are not main-study results.",
   "main_models": [
@@ -30,5 +30,9 @@
     "dl_sequential",
     "dl_functional"
   ],
-  "new_threshold_scope": "post-hoc validation exploration; no new final test or clinical cutoff claim"
+  "new_threshold_scope": "post-hoc validation exploration; no new final test or clinical cutoff claim",
+  "live_logging_change": {
+    "date": "2026-10-18",
+    "scope": "Notebook 02 writes Keras epoch curves and scikit-learn evaluation metrics (per epoch for neural fits, and per model for every classical and neural model) to TensorBoard under runs/live (training) and runs/review (computed from saved predictions). The older replayed TensorBoard export in exports/ is superseded."
+  }
 }

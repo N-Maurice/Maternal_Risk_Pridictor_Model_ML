@@ -8,8 +8,8 @@ Preserve these relative paths in your uploaded project:
 
 ```text
 maternal-project/
-  notebooks/01_data_preparation_and_eda.ipynb
-  notebooks/02_models_and_evaluation.ipynb
+  01_data_preparation_and_eda.ipynb
+  02_models_and_evaluation.ipynb
   src/
   reports/tables/
   Data/UserGuide2024.pdf
@@ -43,7 +43,7 @@ INPUT_ROOT_OVERRIDE = '/content/drive/MyDrive/Maternal_Risk_Pridictor_Model'
 OUTPUT_ROOT_OVERRIDE = '/content/maternal-risk-results'
 ```
 
-Alternatively upload the project without mounting Drive and use its uploaded path. Authentication is performed by the student through Colab. Use an output path in Drive if you want outputs to persist.
+Alternatively upload the project without mounting Drive and use its uploaded path. Colab asks for Google authentication when Drive is mounted. Use an output path in Drive if you want outputs to persist.
 
 ## Packages and experiment scope
 

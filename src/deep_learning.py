@@ -73,8 +73,9 @@ def architecture(kind,preprocessor,params,input_dim=None):
     return model
 
 
-def callbacks(path):
-    return [tf.keras.callbacks.EarlyStopping(monitor='val_pr_auc',mode='max',patience=4,restore_best_weights=True),
+def callbacks(path, run_log=None, name=None):
+    live = run_log.keras_callbacks(name or Path(path).stem) if run_log is not None else []
+    return live + [tf.keras.callbacks.EarlyStopping(monitor='val_pr_auc',mode='max',patience=4,restore_best_weights=True),
             tf.keras.callbacks.ReduceLROnPlateau(monitor='val_pr_auc',mode='max',patience=2,factor=.5,min_lr=1e-6),
             tf.keras.callbacks.ModelCheckpoint(path,monitor='val_pr_auc',mode='max',save_best_only=True)]
 
@@ -88,6 +89,9 @@ def predict_model(model,preprocessor,frame):
 def stage6(cfg):
     if (cfg.state/'test_evaluation_guard.json').exists():
         raise RuntimeError('Final test has been opened; training/tuning is frozen. Use saved results or start a separate explicitly documented study.')
+    from live_logging import RunLog
+    run_log=RunLog(cfg.root,'stage6',mode='training',seed=cfg.seed)
+    run_log.fingerprint([cfg.sample,cfg.state/'split_indices.npz'])
     seed_tensorflow(cfg)
     train,val=load_dev(cfg);xt,xv=features(train),features(val);yt=train.target.to_numpy();yv=val.target.to_numpy()
     sub=stratified_subset(yt,cfg.tuning_size,cfg.seed)
@@ -110,10 +114,11 @@ def stage6(cfg):
             tf.keras.backend.clear_session();seed_tensorflow(cfg,trial)
             model=architecture(kind,prep,params,input_dim=None if isinstance(a,dict) else a.shape[1])
             start=time.perf_counter();path=cfg.models/f'trial_{kind}_{trial}.keras'
-            history=model.fit(dataset(subinputs,yt[sub],params['batch_size'],True,cfg.seed+trial),validation_data=dataset(b,yv,params['batch_size']),epochs=16,class_weight=weights,callbacks=callbacks(path),shuffle=False,verbose=0)
+            history=model.fit(dataset(subinputs,yt[sub],params['batch_size'],True,cfg.seed+trial),validation_data=dataset(b,yv,params['batch_size']),epochs=16,class_weight=weights,callbacks=callbacks(path,run_log),shuffle=False,verbose=0)
             model=tf.keras.models.load_model(path)
             p=model.predict(dataset(b,batch_size=1024),verbose=0).ravel()
             row=dict(api=kind,trial=trial,phase='tuning',training_rows=len(sub),epochs_run=len(history.history['loss']),training_seconds=time.perf_counter()-start,parameters=json.dumps(params),**metrics(yv,p,choose_threshold(yv,p)))
+            run_log.result(f'{kind}_trial_{trial}',row)
             kind_trials.append(row);tune_rows.append(row)
             pd.DataFrame(history.history).to_csv(cfg.tables/f'stage6_history_{kind}_trial{trial}.csv',index=False)
             print('DL TRIAL',row,flush=True)
@@ -122,11 +127,12 @@ def stage6(cfg):
         tf.keras.backend.clear_session();seed_tensorflow(cfg)
         model=architecture(kind,prep,params,input_dim=None if isinstance(a,dict) else a.shape[1]);path=cfg.models/f'dl_{kind}.keras'
         start=time.perf_counter()
-        history=model.fit(dataset(a,yt,params['batch_size'],True,cfg.seed),validation_data=dataset(b,yv,params['batch_size']),epochs=24,class_weight=weights,callbacks=callbacks(path),shuffle=False,verbose=0)
+        history=model.fit(dataset(a,yt,params['batch_size'],True,cfg.seed),validation_data=dataset(b,yv,params['batch_size']),epochs=24,class_weight=weights,callbacks=callbacks(path,run_log),shuffle=False,verbose=0)
         model=tf.keras.models.load_model(path)
         p=model.predict(dataset(b,batch_size=1024),verbose=0).ravel();threshold=choose_threshold(yv,p)
         row=dict(model='dl_'+kind,api=kind,training_rows=len(train),epochs_run=len(history.history['loss']),best_epoch=int(np.argmax(history.history['val_pr_auc'])+1),training_seconds=time.perf_counter()-search_start,refit_seconds=time.perf_counter()-start,best_parameters=json.dumps(params),**metrics(yv,p,threshold))
         if row['roc_auc']>.85:raise RuntimeError('Core DL AUC exceeds leakage trigger; investigate.')
+        run_log.result('dl_'+kind,row)
         final_rows.append(row);val_preds['dl_'+kind]=p
         hist=pd.DataFrame(history.history);hist['epoch']=np.arange(1,len(hist)+1);hist.to_csv(cfg.tables/f'stage6_history_{kind}.csv',index=False)
         fig,axes=plt.subplots(1,3,figsize=(13,3.5))
@@ -141,4 +147,5 @@ def stage6(cfg):
     np.savez_compressed(cfg.state/'deep_validation_predictions.npz',y=yv,**val_preds)
     write_json(cfg.tables/'stage6_fit_provenance.json',dict(encoder_fit_split='train',fit_rows=len(train),validation_fit_rows=0,test_fit_rows=0,tf_data_operations=['from_tensor_slices','shuffle (train only)','batch','prefetch'],functional_oov_index=0))
     stage_done(cfg,6,final.to_dict('records'))
+    run_log.finish()
     return final

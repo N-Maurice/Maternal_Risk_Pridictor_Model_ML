@@ -93,7 +93,7 @@ def ingest_fresh(cfg):
     raw=cfg.root/'Data/Nat2024PublicUS.c20250512.r20250708.txt'
     guide=cfg.root/'Data/UserGuide2024.pdf';layout=cfg.root/'Data/natality2024_variable_layout.csv'
     for p in [raw,guide,layout]:
-        if not p.is_file():raise FileNotFoundError(f'Required raw-ingestion input: {p}')
+        if not p.is_file():raise FileNotFoundError(f'Required raw-ingestion input: {p}. The raw file is stored in Data/Nat2024us.zip; extract it with: unzip Data/Nat2024us.zip -d Data')
     if shutil.which('pdftotext') is None:
         raise RuntimeError('Raw audit requires pdftotext (Poppler). Install it in your environment or use the audited parquet mode.')
     audit=cfg.data/'stage1_audit';audit.mkdir(parents=True,exist_ok=True)

@@ -1,6 +1,0 @@
-model,rows,source,max_absolute_prediction_difference,passed
-equal_weight_tree_neural_ensemble,10,development validation reload examples,7.450580596923828e-09,True
-native_hist_boosting_sigmoid,10,development validation reload examples,0.0,True
-functional_unweighted_sigmoid,10,development validation reload examples,1.4901161193847656e-08,True
-functional_unweighted_h5,10,development validation reload examples,0.0,True
-functional_unweighted_savedmodel,10,development validation reload examples,0.0,True

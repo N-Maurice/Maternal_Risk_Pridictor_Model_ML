@@ -36,6 +36,20 @@ All models use the same splits, training-only preprocessing and scikit-learn met
 
 **Error analysis:** multiple pregnancies (3% of births, 63% preterm) are detected almost perfectly and supply about 60% of correct detections. For singleton pregnancies, recall at the frozen threshold is only 0.16–0.20 (ROC-AUC ≈0.66), and first pregnancies are hardest. Pre-delivery birth-certificate data support modest retrospective risk ranking; this is a research benchmark, not a clinical screening tool.
 
+**Screening threshold:** on validation data, moving gradient boosting from the F1-optimal to the F2-optimal threshold raises recall from 0.316 to 0.687, while precision falls from 0.418 to 0.165 (433 alerts per 1,000 births).
+
+## Figures
+
+All nine report figures are in [`images/`](images/).
+
+| Test precision–recall curves | Recall by plurality (validation) |
+|---|---|
+| ![Test precision-recall curves](images/fig04_test_precision_recall.png) | ![Recall by plurality](images/fig09_recall_by_plurality.png) |
+
+![Screening threshold trade-offs](images/fig03_screening_threshold_tradeoffs.png)
+
+![Functional network training curves](images/fig02_functional_network_training.png)
+
 ## Notebooks
 
 Run them in order; each also works from a fresh kernel.
@@ -57,11 +71,11 @@ Keras logs only its own streaming metrics, so I linked scikit-learn's evaluation
 - **Randomized searches**: one step per candidate. **Learning curves**: step = number of training records. **Frozen test** and **singleton-only** evaluations are written to their own sections.
 
 ```bash
-source .venv/bin/activate
+source .venv/bin/activate        # For Linux users and for Windows Source .venv/Scripts/activate 
 tensorboard --logdir runs        # then open http://localhost:6006
 ```
 
-`runs/live/` holds logs from training runs; `runs/review/` holds logs computed from the saved predictions of my completed study (each run's `manifest.json` and `events.jsonl` record exactly what was executed). Useful tabs: **Scalars** (filter `sklearn_` or `epoch_`), **PR Curves**, **Images**, **Text** and **HParams**. Inside notebook 02, set `SHOW_TENSORBOARD=True` to open the dashboard inline.
+The `runs/` folder is created when the notebooks run and is shared in the Google Drive folder rather than on GitHub. `runs/live/` holds logs from training runs; `runs/review/` holds logs computed from the saved predictions of my completed study (each run's `manifest.json` and `events.jsonl` record exactly what was executed). Useful tabs: **Scalars** (filter `sklearn_` or `epoch_`), **PR Curves**, **Images**, **Text** and **HParams**. Inside notebook 02, set `SHOW_TENSORBOARD=True` to open the dashboard inline.
 
 ## Setup
 
@@ -73,20 +87,13 @@ python -m pip install -r requirements.txt
 
 `requirements.txt` lists every dependency with the versions I tested (Python 3.13.15, scikit-learn 1.9.1, TensorFlow 2.21.0, Keras 3.15.1, TensorBoard 2.21.0, SHAP 0.54.1).
 
-**Data.** Raw data are not committed to Git. Download `Nat2024us.zip` and `UserGuide2024.pdf` from the [CDC natality data page](https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/DVS/natality/), or from my Google Drive folder, and place them in `Data/`. The Drive folder also contains the processed sample and split files needed to run the notebooks without re-parsing the raw file. The 4.9 GB raw text file is kept only inside the zip; the notebooks do not need it, and the optional raw audit needs it extracted first: `unzip Data/Nat2024us.zip -d Data`.
+**Data.** Raw data are not committed to Git; the official [user guide](Data/UserGuide2024.pdf) is included. Download `Nat2024us.zip` from the [CDC natality data page](https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/DVS/natality/), or from my Google Drive folder, and place it in `Data/`. The Drive folder also contains the processed sample, split files, saved results and models needed to re-run the notebooks without re-parsing the raw file. The notebooks are stored with all their outputs, so they can also be read directly on GitHub. The 4.9 GB raw text file is kept only inside the zip; the notebooks do not need it, and the optional raw audit needs it extracted first: `unzip Data/Nat2024us.zip -d Data`.
 
-**Kaggle / Colab.** All paths are set in each notebook's first code cell. Set `INPUT_ROOT_OVERRIDE` to the uploaded project folder; outputs go to `/kaggle/working/maternal-risk-results` or `/content/maternal-risk-results`. On Colab, `MOUNT_GOOGLE_DRIVE=True` mounts Drive. Details are in [reports/PORTABILITY.md](reports/PORTABILITY.md).
+**Kaggle / Colab.** All paths are set in each notebook's first code cell. Set `INPUT_ROOT_OVERRIDE` to the uploaded project folder; outputs go to `/kaggle/working/maternal-risk-results` or `/content/maternal-risk-results`. On Colab, `MOUNT_GOOGLE_DRIVE=True` mounts Drive. Each notebook's first cell explains these options.
 
-## Commands
+## Running the notebooks
 
-```bash
-python scripts/run_analysis.py                                 # review notebooks 01 and 02 in fresh kernels
-python scripts/run_analysis.py --notebook 2 --train --deep-learning   # new training run with live TensorBoard logs
-python scripts/run_analysis.py --notebook 3 --train-feature-study     # retrain the 16- vs 32-feature study
-python -m unittest discover -s tests -v                        # automated checks
-python scripts/audit_project.py                                # notebook, data-tracking and report audit
-tensorboard --logdir runs
-```
+Open the notebooks in VS Code or Jupyter with the `.venv` kernel and run them in order. Review mode is the default; set `RUN_TRAINING = True` (and `RUN_DEEP_LEARNING = True` for the networks) in the first code cell of notebook 02 to retrain. Then open TensorBoard with `tensorboard --logdir runs`.
 
 ## Saved models
 
@@ -97,18 +104,19 @@ tensorboard --logdir runs
 | `models/best_deep_preprocessing.joblib` | Training-fitted numeric scaler and category encoder for the network |
 | `models/inference_metadata.json` | Frozen thresholds, target definition and input description |
 
-Reloading each format reproduces the original predictions exactly ([reports/tables/stage9_reload_proof.csv](reports/tables/stage9_reload_proof.csv)). Model files are gitignored and shared through the Google Drive folder.
+Reloading each format reproduces the original predictions exactly (checked in notebook 02). Model files are gitignored and shared through the Google Drive folder.
 
 ## Repository layout
 
 | Path | Contents |
 |---|---|
-| `0*_*.ipynb` (project root) | The three notebooks above |
-| `src/` | Reusable code: ingestion, features, models, evaluation, TensorBoard/scikit-learn logging |
-| `scripts/` | Notebook runner and project audit |
-| `tests/` | Leakage boundaries, training-only preprocessing, frozen-test guard, metrics and logging checks |
-| `reports/` | Final report, figures (300 dpi), result tables, verified facts and portability notes |
-| `Data/`, `data/`, `models/`, `runs/`, `experiments/` | Raw data, processed data, model files and logs (gitignored) |
+| `01_…`, `02_…`, `03_….ipynb` | The three notebooks above, saved with their outputs |
+| `src/` | Code the notebooks import: features, models, evaluation, TensorBoard/scikit-learn logging |
+| `images/` | The nine figures used in the report (300 dpi) |
+| `Data/UserGuide2024.pdf` | Official CDC/NCHS user guide for the 2024 natality file |
+| `requirements.txt` | Pinned Python environment |
+
+Raw data, processed data, models, TensorBoard logs and result tables are not on GitHub; they are in the Google Drive folder.
 
 ## Limitations
 

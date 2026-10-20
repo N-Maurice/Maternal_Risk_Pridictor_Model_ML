@@ -1,5 +1,0 @@
-model,feature_set,scope,rows,max_absolute_difference,passed
-hist_gradient_boosting,current_32,training rows,5,0.0,True
-hist_gradient_boosting,challenger_16,training rows,5,0.0,True
-logistic,current_32,training rows,5,0.0,True
-logistic,challenger_16,training rows,5,0.0,True

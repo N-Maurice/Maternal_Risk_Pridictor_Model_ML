@@ -1,5 +1,0 @@
-model,feature_set,fit_seconds,training_rows,input_features,encoded_features
-hist_gradient_boosting,current_32,5.706386185003794,210000,32,109
-hist_gradient_boosting,challenger_16,2.9461388169875136,210000,16,52
-logistic,current_32,3.778738570996211,210000,32,109
-logistic,challenger_16,1.470509653998306,210000,16,52

@@ -1,5 +1,0 @@
-model,metric,lower_95,upper_95,interval_includes_zero,bootstrap_reps
-hist_gradient_boosting,delta_AP,-0.0029124453728029374,0.0005996656817197034,True,200
-hist_gradient_boosting,delta_ROC_AUC,-0.00419139147768693,8.221196242041e-05,True,200
-logistic,delta_AP,-0.005230162652032382,-0.0012958627692233318,False,200
-logistic,delta_ROC_AUC,-0.012024889691230806,-0.005110299163847417,False,200

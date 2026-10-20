@@ -1,80 +1,29 @@
-# Raw datasets and derived record-level data (both local case variants).
-/Data/
-/data/
-*.txt
-!requirements.txt
-*.zip
-*.parquet
-*.pkl
-*.joblib
-*.keras
-*.h5
-*.npz
-*.npy
-/models/*
-!/models/.gitkeep
-/experiments/
-/runs/
-/archive/
-/exports/
-/private/
+# Publish only the deliverables: notebooks, code, figures, README,
+# requirements and the official user guide. Everything else stays local
+# (data, models, logs, reports, scripts and tests).
+/*
+!/.gitignore
+!/README.md
+!/requirements.txt
+!/0*_*.ipynb
+!/images/
+!/src/
+!/Data/
 
-# Final report: keep local for now; remove these rules when ready to publish.
-/reports/REPORT.md
-/reports/REPORT.docx
-/reports/REPORT.pdf
+# Data folder: only the CDC user guide; raw data and archives stay local.
+/Data/*
+!/Data/UserGuide2024.pdf
 
-# Credentials and local configuration.
+# Never publish credentials, even inside an allowed folder.
 .env
 .env.*
-!.env.example
-!.env.sample
-.aws/
-.ssh/
-.codex/
-.agents/
-.netrc
-.pypirc
+*.pem
+*.key
 credentials.json
 service-account*.json
 service_account*.json
-*.pem
-*.key
-*.p12
-*.pfx
 
-# Environments, caches and build output.
-.venv/
-venv/
-env/
+# Caches.
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-.coverage.*
-htmlcov/
-coverage.xml
-build/
-dist/
-*.egg-info/
-
-# Editor files and temporary output.
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-*.swp
-*.swo
-*~
-*.log
-*.tmp
-*.bak
-
-# Record previews and local work history.
-/reports/revision/tables/training_head_five.csv
-/reports/revision/tables/training_tail_five.csv
-/PROGRESS.md
-/reports/CLEANUP_MANIFEST.json

@@ -87,13 +87,213 @@ python -m pip install -r requirements.txt
 
 `requirements.txt` lists every dependency with the versions I tested (Python 3.13.15, scikit-learn 1.9.1, TensorFlow 2.21.0, Keras 3.15.1, TensorBoard 2.21.0, SHAP 0.54.1).
 
-**Data.** Raw data are not committed to Git; the official [user guide](Data/UserGuide2024.pdf) is included. Download `Nat2024us.zip` from the [CDC natality data page](https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/DVS/natality/), or from my Google Drive folder, and place it in `Data/`. The Drive folder also contains the processed sample, split files, saved results and models needed to re-run the notebooks without re-parsing the raw file. The notebooks are stored with all their outputs, so they can also be read directly on GitHub. The 4.9 GB raw text file is kept only inside the zip; the notebooks do not need it, and the optional raw audit needs it extracted first: `unzip Data/Nat2024us.zip -d Data`.
+**Data.** Raw data are not committed to Git; the official [user guide](Data/UserGuide2024.pdf) is included. Download `Nat2024us.zip` from the [CDC natality data page](https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/DVS/natality/), or from my Google Drive folder, and place it in `Data/`. The Drive folder also contains the processed sample, split files, saved results and models needed to re-run the notebooks without re-parsing the raw file. The notebooks are stored with all their outputs, so they can also be read directly on GitHub. The 4.9 GB raw text file is kept inside the ZIP. Saved-results review does not need it; the optional raw audit/ingestion step can extract it into writable output storage when enabled.
 
-**Kaggle / Colab.** All paths are set in each notebook's first code cell. Set `INPUT_ROOT_OVERRIDE` to the uploaded project folder; outputs go to `/kaggle/working/maternal-risk-results` or `/content/maternal-risk-results`. On Colab, `MOUNT_GOOGLE_DRIVE=True` mounts Drive. Each notebook's first cell explains these options.
+**Kaggle / Colab.** The notebooks start with imports, followed by short numbered setup steps. Set paths in **Choose your project location**. Set `INPUT_ROOT_OVERRIDE` to the uploaded project folder; outputs go to `/kaggle/working/maternal-risk-results` or `/content/maternal-risk-results`. On Colab, `MOUNT_GOOGLE_DRIVE=True` mounts Drive. Each setup step explains its purpose; package installation is explicit and optional.
 
 ## Running the notebooks
 
-Open the notebooks in VS Code or Jupyter with the `.venv` kernel and run them in order. Review mode is the default; set `RUN_TRAINING = True` (and `RUN_DEEP_LEARNING = True` for the networks) in the first code cell of notebook 02 to retrain. Then open TensorBoard with `tensorboard --logdir runs`.
+Open the notebooks in VS Code or Jupyter with the `.venv` kernel and run them in order. Review mode is the default; set `RUN_TRAINING = True` (and `RUN_DEEP_LEARNING = True` for the networks) in **Choose what to run** in notebook 02 to retrain. Then open TensorBoard with `tensorboard --logdir runs`.
+
+## Run from Google Drive: required files and step-by-step guide
+
+The notebooks need the **complete project inputs**, not just the raw natality dataset or the two best model files. Use the Drive folder linked above to obtain the saved sample, splits, predictions, tables and models; use this repository's current `src/` folder and notebooks together.
+
+### 1. Arrange the Drive folders
+
+Use this exact structure inside **My Drive**. Folder names are case-sensitive: `data/` and `Data/` are different.
+
+```text
+My Drive/
+├── Maternal_Risk_Pridictor_Model/
+│   ├── 01_data_preparation_and_eda.ipynb
+│   ├── 02_models_and_evaluation.ipynb
+│   ├── 03_lean_feature_evaluation.ipynb
+│   ├── requirements.txt
+│   ├── data/
+│   │   └── processed/
+│   │       ├── modeling_sample.parquet
+│   │       └── state/                    # Upload the entire original folder.
+│   │           ├── split_indices.npz
+│   │           ├── traditional_validation_predictions.npz
+│   │           ├── deep_validation_predictions.npz
+│   │           ├── test_traditional_predictions.npz
+│   │           ├── test_deep_predictions.npz
+│   │           └── test_evaluation_guard.json
+│   ├── Data/
+│   │   ├── UserGuide2024.pdf
+│   │   └── Nat2024us.zip                 # Optional: raw audit/ingestion only.
+│   ├── reports/
+│   │   └── tables/                       # Upload the entire folder and subfolders.
+│   │       ├── stage1_data_dictionary.csv
+│   │       ├── stage4_split_manifest.csv
+│   │       ├── core_scope_provenance.json
+│   │       ├── core/
+│   │       ├── feature_challenger/
+│   │       └── ...other saved CSV/JSON/Markdown tables
+│   ├── models/
+│   │   ├── feature_challenger/
+│   │   │   └── validation_predictions.npz
+│   │   └── ...saved models and preprocessors
+│   └── src/                              # Upload the entire current folder.
+│       ├── project.py
+│       ├── live_logging.py
+│       ├── tensorboard_metrics.py
+│       ├── notebook_inputs.py
+│       ├── readable_features.py
+│       ├── screening_metrics.py
+│       └── ...other project Python files
+└── maternal-risk-results/                # Created for new outputs; separate from inputs.
+```
+
+The tree shows key files, not an exhaustive list. Copy the **complete** `src/`, `data/processed/state/` and `reports/tables/` directories. Keep `modeling_sample.parquet`, split indices and saved predictions from the same completed study together; do not regenerate splits to bypass a missing-file error.
+
+In the shared Drive view, folders such as **Dataset and the User Guide Report**, **Two Best Models**, and **Demo_Video** are distribution folders, not paths used by the notebooks. Copy the guide into `Data/UserGuide2024.pdf`. Place fitted artifacts under `models/` with their original filenames. The visible `data/`, `reports/` and `models/` folders must contain their subfolders; their presence alone does not prove that the required files are inside. Upload `src/` if it is absent.
+
+The archive labelled as the 300,000-row sample, splits and saved predictions must be extracted before use. Inspect its contents first: if it contains `data/processed/...`, extract at the project root; if it contains only the sample and `state/`, extract into `data/processed/`. Avoid extra nesting such as `data/data/processed/` or `src/src/`. Keeping a ZIP beside the folders does not make its contents available to pandas.
+
+### 2. Know which resources each task needs
+
+| Task | Required resources |
+|---|---|
+| Notebook 01, saved-results review | Processed sample, original `state/`, complete `src/`, complete `reports/tables/`, and guide in `Data/`. Raw TXT/ZIP is optional. |
+| Notebook 02, saved-results review | The same project inputs, including both validation prediction caches, both frozen-test caches and the test guard. TensorFlow and TensorBoard are needed for the evaluation dashboards even with neural training disabled. |
+| Notebook 03, saved-results review | The same source/sample/split inputs, `reports/tables/feature_challenger/`, `core_scope_provenance.json`, and `models/feature_challenger/validation_predictions.npz`. Copy the complete state folder so its protected-evidence checks pass. |
+| New development training | The processed sample and original split/state plus the project source and supporting tables. Enable the training switches explicitly. This does not require parsing the raw TXT. |
+| Optional raw audit or ingestion | The matching official `Nat2024us.zip` or extracted TXT, guide and audited tables. Extraction needs several GB of free disk space. |
+| Reload saved models for inference | The relevant model **and its fitted preprocessor**, `src/`, metadata and matching package versions. Use the tested local requirements for saved-object compatibility. |
+
+`tensorboard_runs.zip` is an optional archive of previous dashboard files. It is not a dataset, does not replace prediction caches, and is not required to create new notebook logs. The demo video and final report are not runtime inputs.
+
+### 3. Open the notebook in Google Colab and check packages
+
+1. Open [Google Colab](https://colab.research.google.com/) and upload/open the current notebook. Opening a notebook does not automatically upload its data or source folders.
+2. Start with a standard CPU runtime for saved-results review. A GPU is optional for new TensorFlow training; the classical estimators use the CPU.
+3. Run the import cells first. Required packages include NumPy, pandas, SciPy, Matplotlib, scikit-learn (at least 1.6 for the project APIs), PyArrow, joblib, threadpoolctl and IPython. Notebooks 02 and 03 also import TensorFlow and TensorBoard.
+4. If an import fails, install the missing package in a separate cell, for example:
+
+   ```python
+   %pip install pyarrow tensorboard
+   ```
+
+   Restart the session/kernel after installation and run from the beginning. If TensorFlow is missing, install it explicitly with `%pip install tensorflow`. Do not replace a working hosted TensorFlow stack with every local version pin just to review saved results. The local `requirements.txt` records the tested environment; an arbitrary hosted environment is not guaranteed to match it.
+
+Colab runtimes are temporary, and notebook sharing does not include the runtime's files or installed packages. See the [official Colab FAQ](https://research.google.com/colaboratory/faq.html).
+
+### 4. Set the Drive paths in each notebook
+
+In **Choose your project location**, use:
+
+```python
+INPUT_ROOT_OVERRIDE = '/content/drive/MyDrive/Maternal_Risk_Pridictor_Model'
+PROJECT_ZIP_OVERRIDE = None
+OUTPUT_ROOT_OVERRIDE = '/content/drive/MyDrive/maternal-risk-results'
+MOUNT_GOOGLE_DRIVE = True
+DRIVE_BUNDLE_ID = None
+DRIVE_DATA_FOLDER = Path(INPUT_ROOT_OVERRIDE)
+```
+
+Use the exact folder name visible in your own My Drive. If you copied it under another parent folder, include that parent in the path. Keep the result folder separate from the original input folder.
+
+In **Choose what to run**, keep notebooks 01 and 02 in review mode first:
+
+```python
+RUN_TRAINING = False
+RUN_DEEP_LEARNING = False
+RUN_RAW_AUDIT = False
+RUN_INGESTION = False
+```
+
+For notebook 03, keep `RUN_STUDY = False`. Leave `SHOW_TENSORBOARD = False` initially in notebook 02; logs are still written, but the inline dashboard stays closed.
+
+Run **Identify the runtime and optionally mount Drive**, approve the Drive access prompt, and confirm that it prints `Runtime: Colab`. With an explicit `INPUT_ROOT_OVERRIDE`, the project ZIP/download steps skip their work; no public Drive file ID or project ZIP is needed for this extracted-folder workflow.
+
+### 5. Check the upload before running the analysis
+
+After Drive is mounted, run this optional diagnostic cell. It checks the common missing files; it does not replace the requirement to upload the full folders.
+
+```python
+project = Path(INPUT_ROOT_OVERRIDE)
+required = [
+    'data/processed/modeling_sample.parquet',
+    'data/processed/state/split_indices.npz',
+    'data/processed/state/traditional_validation_predictions.npz',
+    'data/processed/state/deep_validation_predictions.npz',
+    'data/processed/state/test_traditional_predictions.npz',
+    'data/processed/state/test_deep_predictions.npz',
+    'data/processed/state/test_evaluation_guard.json',
+    'reports/tables/stage1_data_dictionary.csv',
+    'reports/tables/stage4_split_manifest.csv',
+    'src/project.py', 'src/live_logging.py',
+    'src/tensorboard_metrics.py', 'src/notebook_inputs.py',
+    'Data/UserGuide2024.pdf',
+]
+missing = [name for name in required if not (project / name).is_file()]
+if missing:
+    raise FileNotFoundError('Missing files:\n' + '\n'.join(missing))
+print('Common required files found:', project)
+```
+
+For notebook 03 also confirm `models/feature_challenger/validation_predictions.npz` and `reports/tables/feature_challenger/study_plan.json` exist. A successful basic check does not validate every saved table or prove that the sample and splits match; the notebooks perform those checks during analysis.
+
+### 6. Run and retain results
+
+Run notebook 01 from top to bottom, then notebook 02. Run notebook 03 only for the optional feature comparison. Each notebook can also run independently from a fresh kernel with all inputs present. Do not jump directly to an analysis cell: it depends on variables established in the earlier setup cells.
+
+With the Drive output configuration above:
+
+| Output | Location under `My Drive/maternal-risk-results/` |
+|---|---|
+| Review logs and TensorBoard events | `runs/review/<run-id>/` |
+| Live training logs | `runs/live/<run-id>/` |
+| Main review comparison and threshold tables | `reports/tables/core/` |
+| Main review figures | `reports/figures/notebook/` |
+| New notebook 02 training artifacts, tables and figures | `experiments/core/<run-id>/` |
+| Feature-study tables and figures | `reports/tables/feature_challenger/`, `reports/figures/feature_challenger/` |
+| New feature-study models | `models/feature_challenger/` |
+
+To view dashboards in Colab, run:
+
+```python
+%load_ext tensorboard
+%tensorboard --logdir /content/drive/MyDrive/maternal-risk-results/runs
+```
+
+Review events are calculated from cached predictions or replayed saved histories and are labelled accordingly. Live epoch events require a new training run. Once review succeeds, notebook 02 can train with `RUN_TRAINING = True` and `RUN_DEEP_LEARNING = True`; notebook 03 uses `RUN_STUDY = True`. Keep the original final-test guard and prediction caches unchanged.
+
+### 7. Kaggle uses a different input connection
+
+Kaggle does not mount Drive through `google.colab.drive`. Download the required project folders or complete `maternal_project.zip`, upload them as a private Kaggle Dataset, and attach it with **Add Input**. Downloading only this GitHub repository is insufficient because processed data, models and saved result tables are excluded from Git.
+
+Use these settings in **Choose your project location**:
+
+```python
+INPUT_ROOT_OVERRIDE = None  # Auto-discover an attached extracted project.
+PROJECT_ZIP_OVERRIDE = None  # Auto-discover an attached maternal_project.zip.
+OUTPUT_ROOT_OVERRIDE = '/kaggle/working/maternal-risk-results'
+MOUNT_GOOGLE_DRIVE = False
+DRIVE_BUNDLE_ID = None
+DRIVE_DATA_FOLDER = Path('/content/drive/MyDrive/Maternal_Risk_Pridictor_Model')  # Unused on Kaggle.
+```
+
+If more than one matching project is attached, set `INPUT_ROOT_OVERRIDE` to the exact folder containing `data/`, `reports/` and `src/`. If using an explicit ZIP path instead, set `PROJECT_ZIP_OVERRIDE` to its attached location and leave `INPUT_ROOT_OVERRIDE = None`. The raw `Nat2024us.zip` is not a project bundle.
+
+Enable Internet only when installing packages or requesting a download; attached inputs avoid the need to download the project during execution. Run in review mode first, then save a notebook version with outputs to retain files written under `/kaggle/working`. See [Kaggle notebook documentation](https://www.kaggle.com/docs/notebooks).
+
+### Common setup errors
+
+| Error | Fix |
+|---|---|
+| `Drive mounting is for Colab` | Open the notebook in Colab, or on Kaggle disable mounting and attach inputs. Do not force Colab runtime flags inside Kaggle. |
+| Missing `split_indices.npz` | Upload the entire original `data/processed/state/` folder that matches the sample. Do not generate replacement splits. |
+| Missing `project.py`, `live_logging.py` or `notebook_inputs.py` | Upload the complete current `src/` folder; check for accidental `src/src/` nesting. |
+| Missing CSV/JSON table later in execution | Upload the complete `reports/tables/` folder and subfolders, not only files shown in the quick check. |
+| No Parquet engine | Install `pyarrow` in the active notebook runtime, restart, and run from the top. |
+| Sample/split identity mismatch | Restore the matching original sample, split indices, manifest and prediction caches together. Do not disable the assertion. |
+| Missing project ZIP | For an extracted Drive project, set `INPUT_ROOT_OVERRIDE` and leave ZIP/download settings `None`; otherwise attach the complete bundle. |
+| Raw ZIP found but no processed sample | The raw ZIP cannot substitute for the prepared sample, state, tables and Python source. |
+
+This guide reflects the files and paths used by the project. A screenshot confirms visible folder names, not their contents or permissions; a successful run in your own Colab/Kaggle session is the final check.
 
 ## Saved models
 
